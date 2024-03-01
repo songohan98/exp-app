@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useEffect, useState} from 'react';
 
 const CheckboxComponent = () => {
 
@@ -64,7 +64,7 @@ const CheckboxComponent = () => {
     const string = getQuery.toLowerCase(); // Convert the query to lowercase for case-insensitive comparison
     const updatedNumbers = getNumbers.map((num) => ({
       ...num,
-      checked: num.number.toString().toLowerCase().includes(string) // Check if the number contains the query string
+      checked: num.number.toString().toLowerCase().includes(matchingString) // Check if the number contains the query string
     }));
     setNumbers(updatedNumbers);
   }
@@ -84,7 +84,6 @@ const CheckboxComponent = () => {
 
   return (
     <div className='module'>
-      <h3 style={{color:'white', textAlign:'center'}}>State version: </h3>
       <div style={divStyle}>
         {getNumbers.map((num, index) => (
           <div key={num.number} style={{ width: '10%', marginBottom: '10px' }}>
@@ -99,6 +98,7 @@ const CheckboxComponent = () => {
           </div>
         ))}
       </div>
+      <h3 style={{color:'white', textAlign:'center'}}>State version: </h3>
       <div style={barStyle}>
         <input
           type="text"
@@ -108,20 +108,6 @@ const CheckboxComponent = () => {
         />
       </div>
       <h3 style={{color:'white', textAlign:'center'}}>Passing event directly version: </h3>
-      <div style={divStyle}>
-        {getNumbers.map((num, index) => (
-          <div key={num.number} style={{ width: '10%', marginBottom: '10px' }}>
-            <label>
-              <input
-                type="checkbox"
-                checked={num.checked}
-                onChange={() => handleCheckboxChange(index)}
-              />
-              {num.number}
-            </label>
-          </div>
-        ))}
-      </div>
       <div style={barStyle}>
         <input
           type="text"
