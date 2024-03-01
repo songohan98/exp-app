@@ -51,7 +51,7 @@ const CheckboxComponent = () => {
   const filterByMatch = () => {
     const matchingString = getQuery;
     console.log("What value getQuery has after filter function called: " + matchingString);
-    const string = getQuery.toLowerCase(); // Convert the query to lowercase for case-insensitive comparison
+    const string = getQuery.toLowerCase(); 
     const updatedNumbers = getNumbers.map((num) => ({
       ...num,
       checked: num.number.toString().toLowerCase().includes(string) // Check if the number contains the query string
@@ -61,7 +61,6 @@ const CheckboxComponent = () => {
 
   const filterByMatchDifferent = (matchingString) => {
     console.log("What directly passing to event does inside filter passing function: " + matchingString);
-    const string = getQuery.toLowerCase(); // Convert the query to lowercase for case-insensitive comparison
     const updatedNumbers = getNumbers.map((num) => ({
       ...num,
       checked: num.number.toString().toLowerCase().includes(matchingString) // Check if the number contains the query string
